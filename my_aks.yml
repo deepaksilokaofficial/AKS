@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: model-demo
+ labels:
+  app: model-demo
+spec:
+ replicas: 1
+ selector: 
+  matchLabels:
+   app: model-demo
+ template:
+  metadata:
+   labels:
+    app: model-demo
+  spec:
+   containers:
+   - name: model-demo
+     image: siloka.azurecr.io/model-demo
+     ports:
+     - containerPort: 5000
+   imagePullSecrets:
+   - name: aks.siloka
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: model-demo
+spec:
+ type: LoadBalancer
+ ports:
+ - port: 5000
+ selector:
+  app: model-demo
