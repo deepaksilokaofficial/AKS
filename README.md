@@ -1,4 +1,4 @@
-# Integrating Docker image with ACI 
+# Integrating Docker image with AKS
 
 ## Steps
 1. Create Dockerfile consisting of commands which we want to execute.                                                                                                                                           <p></p>
